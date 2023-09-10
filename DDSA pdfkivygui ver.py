@@ -25,8 +25,7 @@ from kivy.uix.floatlayout import FloatLayout
 
 import datetime
 from pdfkivygui.dfguik import DfguiWidget
-import pdfkivygui
-#from pdfkivygui.pdfkivygui import Graph, BarGraph
+#from pdfkivygui.pdfkivygui import Graph, BarGraph - Should work according to the module examples but it doesn't for me.
 
 
 
@@ -146,7 +145,7 @@ def upload_data():
 
 meal_df = pd.DataFrame({'Meal/Food': pd.Series(dtype = 'string'), 'Carbohydrate (grams)': pd.Series(dtype = 'int')})
 
-#Function to add new data to our meal list
+#Mostly left over from before I was relying on a module. Kept in case I can make use of it again
 def add_meal():
     global meal_df
     Food = input("Enter a name for the meal")
@@ -182,22 +181,9 @@ def add_record():
     #records_df = records_df.sort_index()
     return
 
-upload_data()
 
 
-#add_record()
-
-# Ok for the graph I will probably have to manually make different timestamp ranges to do it. So just going to use an example for now
-#def month_graph():
-    #global records_df
-    #today = date.today()
-    #graph_df = records_df.set_index('Timestamp')
-    #graph_df = graph_df.sort_index()
-   # graph_df = graph_df.loc[today - pd.Timedelta(days = 30): today].reset_index()
-   # print(graph_df)
-   # return
-
-#Successfully gives us the average glucose for each day. Now just need to make an actual graph with this data
+#Leftover graph code, again left in case I can find a way to implement it.
 def test_graph_historic():
     global records_df
     graph_df = records_df.drop(columns = ['Scan Glucose','Rapid insulin (units)','Long acting insulin (units)', 'Carbohydrate (grams)', 'Notes'])
@@ -226,6 +212,7 @@ class graph(FloatLayout):
         
 class DataFrameApp(App):
     def build(self):
+        upload_data()
         return DfguiWidget(records_df)
 #class DataFrameApp(App):
     #def build(self):
@@ -245,5 +232,5 @@ if __name__ == '__main__':
     DataFrameApp().run()
 
 #month_graph()
-test_graph_historic()
+#test_graph_historic()
 #print(meal_df)
