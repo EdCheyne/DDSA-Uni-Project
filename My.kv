@@ -1,0 +1,120 @@
+WindowManager:
+    MainScreen:
+    RecordScreen:
+    ReportScreen:
+    MealScreen:
+    OptionScreen:
+    
+<MainScreen>:
+    name: "main"
+    
+    GridLayout: 
+        cols: 2
+        rows: 2
+       
+       
+        Button:
+            text: "Records"
+            on_release: 
+                app.root.current = "records"
+                root.manager.transition.direction = "left"
+            
+        Button:
+            text: "Reports"
+            on_release: 
+                app.root.current = "reports"
+                root.manager.transition.direction = "left"
+        
+        Button:
+            text: "Food and Meals"
+            on_release: 
+                app.root.current = "meals"
+                root.manager.transition.direction = "left"
+        
+        
+        Button:
+            text: "Options"
+            on_release: 
+                app.root.current = "options"
+                root.manager.transition.direction = "left"
+        
+                         
+    
+<RecordScreen>:
+    name: "records"
+
+    BoxLayout:
+        orientation: "vertical"
+ 
+        GridLayout:
+            size_hint: 1, None
+            size_hint_y: None
+            height: 25
+            cols: 8
+            
+            Label:
+                text: "Index"
+            Label:
+                text: "Timestamp"
+            Label:
+                text: "Historic Glucose"
+            Label:
+                text: "Scan Glucose"
+            Label:
+                text: "Rapid Insulin (Units)"
+            Label:
+                text: "Long acting Insulin (Units)"
+            Label:
+                text: "Carbohydrate (grams)"
+            Label:
+                text: "Notes"
+       
+        Button:
+            text: "Go Back"
+            size_hint: .25, .1
+            pos_hint:{"x":0, "y":0}
+            on_release: 
+                app.root.current = "main"   
+                root.manager.transition.direction = "right"
+             
+<ReportScreen>:
+    name: "reports"
+    
+    FloatLayout: 
+        size: 300, 300
+       
+        Button:
+            text: "Go Back"
+            size_hint: .25, .1
+            pos_hint:{"x":.0, "y":0}
+            on_release: 
+                app.root.current = "main"  
+                root.manager.transition.direction = "right"  
+    
+<MealScreen>:
+    name: "meals"
+    
+    FloatLayout: 
+        size: 300, 300
+       
+        Button:
+            text: "Go Back"
+            size_hint: .25, .1
+            pos_hint:{"x":.0, "y":0}
+            on_release: 
+                app.root.current = "main"    
+                root.manager.transition.direction = "right"
+    
+<OptionScreen>:
+    name: "options"
+    
+    FloatLayout: 
+        size: 300, 300
+       
+        Button:
+            text: "Go Back"
+            size_hint: .25, .1
+            pos_hint:{"x":0, "y":0}
+            on_release: 
+                app.root.current = "main"  
+                root.manager.transition.direction = "right"  
